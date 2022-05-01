@@ -32,11 +32,11 @@ function transform(arr) {
                     transArray.push(arr[i]);
                 }else if (arr[i] === dN && (i+1)<arr.length) {
                     i++;
-                }else if (arr[i] === dP && i>0) {
+                }else if (arr[i] === dP && i>0 && arr[i-2] != dN) {
                     transArray.pop();
                 }else if (arr[i] === dbN && (i+1)<arr.length) {
                     transArray.push(arr[i+1]);
-                }else if (arr[i] === dbP && i>0) {
+                }else if (arr[i] === dbP && i>0 && arr[i-2] != dN) {
                 transArray.push(arr[i-1])
                 }
             
