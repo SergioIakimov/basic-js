@@ -22,7 +22,7 @@ class DepthCalculator {
       depth = Math.max(depth, this.calculateDepth(item));
   }
 
-  return 1 + depth; 
+  return depth +1; 
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }

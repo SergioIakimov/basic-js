@@ -16,28 +16,27 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-  if (!options.separator) {
-    options.separator = '+';
-}
-if (!options.additionSeparator) {
-    options.additionSeparator  = '|';
-}
+    if (!options.separator) {
+      options.separator = '+';
+  }
+    if (!options.additionSeparator) {
+      options.additionSeparator  = '|';
+  }
+    function repeaterAux (separator, aux = '', repeatitions = 1) {
+      let output = [];
+      for (let i = 0; i < repeatitions; i++) {
+          output.push(String(aux));
+      }
+      return output.join(separator);
+  }
 
-const repeaterAux = (separator, string = '', repeatTimes = 1) => {
-    let output = [];
-    for (let i = 0; i < repeatTimes; i++) {
-        output.push(String(string));
-    }
-    return output.join(separator);
-}
-
-const fullAddition = repeaterAux(options.additionSeparator, options.addition, options.additionRepeatTimes);
-options.separator = fullAddition + options.separator;
+    const additionalPart = repeaterAux(options.additionSeparator, options.addition, options.additionRepeatTimes);
+    options.separator = additionalPart + options.separator;
 
 
-return repeaterAux(options.separator, str, options.repeatTimes) + fullAddition;
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+    return repeaterAux(options.separator, str, options.repeatTimes) + additionalPart;
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
 }
 
 module.exports = {

@@ -27,9 +27,7 @@ function createDreamTeam(members) {
       if (typeof members[i] === 'string') {
         str= members[i].toUpperCase();
         str= str.replace(/ /g, '');
-        withoutWhitespase.push(str)
-
-          
+        withoutWhitespase.push(str)          
       }
     }
     sorted = withoutWhitespase.sort();
@@ -38,7 +36,6 @@ function createDreamTeam(members) {
       name+=sorted[i][0];
     }
   }
-  
   return name.toUpperCase();
 
 

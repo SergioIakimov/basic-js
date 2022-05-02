@@ -23,8 +23,8 @@ class VigenereCipheringMachine {
 
   alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    
-  constructor(type = true) {
-    this.type = type
+  constructor(direction = true) {
+    this.direction = direction
   }
 
   encrypt(message, key) {
@@ -32,13 +32,13 @@ class VigenereCipheringMachine {
     const arrOfKeys = [];
     let count = 0;
     let maxlength = 0;
-    let out = '';
+    let output = '';
     if (!message || !key) {
       throw new Error(`Incorrect arguments!`);
     }
     
-    for (let el of message) {
-      const item = el.toUpperCase();
+    for (let letter of message) {
+      const item = letter.toUpperCase();
       if (this.alphabet.includes(item)) {
         count++;
       }
@@ -54,8 +54,8 @@ class VigenereCipheringMachine {
       i++;
     }
 
-    for (let el of key) {
-      const item = el.toUpperCase();
+    for (let letter of key) {
+      const item = letter.toUpperCase();
       const index = this.alphabet.indexOf(item);
       arrOfKeys.push(index);
     }
@@ -80,8 +80,8 @@ class VigenereCipheringMachine {
       }
     }
 
-    out = arrOfElems.join('');
-    return this.type ? out: arrOfElems.reverse().join('');
+    output = arrOfElems.join('');
+    return this.direction ? output: arrOfElems.reverse().join('');
   }
 
   decrypt(message, key) {
@@ -89,17 +89,17 @@ class VigenereCipheringMachine {
     const arrOfKeys = [];
     let count = 0;
     let maxlength = 0;
-    let out = '';
+    let output = '';
     if (!message || !key) {
       throw new Error(`Incorrect arguments!`);
     }
     
-    for (let el of message) {
-     const item = el.toUpperCase()
-      if (this.alphabet.includes(el)) {
+    for (let letter of message) {
+     const item = letter.toUpperCase()
+      if (this.alphabet.includes(letter)) {
         count++;
       }
-      arrOfElems.push(el);
+      arrOfElems.push(letter);
     }
 
     maxlength = Math.max(count, key.length);
@@ -111,8 +111,8 @@ class VigenereCipheringMachine {
       i++
     }
 
-    for (let el of key) {
-      const item = el.toUpperCase();
+    for (let letter of key) {
+      const item =letter.toUpperCase();
       const index = this.alphabet.indexOf(item);
       arrOfKeys.push(index);
     }
@@ -133,24 +133,11 @@ class VigenereCipheringMachine {
         k++;
       }
     }
-     out = arrOfElems.join('');
-
-    return this.type ? out: arrOfElems.reverse().join('');
-  
+     output = arrOfElems.join('');
+    return this.direction ? output: arrOfElems.reverse().join('');
   }
   
 };
-
-
-  /*encrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
-  decrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
-} */
 
 module.exports = {
   VigenereCipheringMachine
